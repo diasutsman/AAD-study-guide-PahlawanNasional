@@ -2,9 +2,8 @@
     <string name="app_name">Pahlawan Nasional</string>
 
     <!--  String used for pahlawan desc  -->
-    <string name="txt_asal">Asal: %s</string>
-    <string name="txt_lahir">Lahir: %s</string>
-    <string name="txt_usia">Usia: %s</string>
-    <string name="txt_gugur">gugur: %s</string>
-    <string name="txt_lokasimakam">Dimakamkan di: %s</string>
+    <string name="txt_desc">Asal: %s\nLahir: %s\nUsia: %s\nGugur: %s\nDimakamkan di: %s\n\n%s</string>
+    <string name="txt_show_more">Show more</string>
+    <string name="txt_show_less">Show less</string>
+    <string name="txt_gambar_pahlawan">Gambar %s</string>
 </resources>

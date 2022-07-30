@@ -2,6 +2,8 @@ package com.example.pahlawannasional.utils
 
 import android.content.Context
 import android.util.Log
+import android.widget.TextView
+import com.example.pahlawannasional.R
 import com.example.pahlawannasional.responses.DaftarPahlawan
 import com.example.pahlawannasional.responses.Pahlawan
 import com.google.gson.Gson

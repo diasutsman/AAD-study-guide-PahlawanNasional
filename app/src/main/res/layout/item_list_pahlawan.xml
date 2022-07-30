@@ -1,62 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingHorizontal="20dp"
-    android:paddingVertical="16dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_pahlawan"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+    <data>
 
-    <LinearLayout
-        android:id="@+id/ll_nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/civ_pahlawan"
-        app:layout_constraintStart_toEndOf="@id/civ_pahlawan"
-        app:layout_constraintTop_toTopOf="@id/civ_pahlawan">
+        <variable
+            name="pahlawan"
+            type="com.example.pahlawannasional.responses.Pahlawan" />
+    </data>
 
-        <TextView
-            android:id="@+id/tv_nama_pendek"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            tools:text="nama pendek pahlawan" />
-
-        <TextView
-            android:id="@+id/tv_nama_panjang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="nama panjangnya" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/iv_pahlawan"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        app:layout_constraintTop_toBottomOf="@id/ll_nama"
-        app:layout_constraintWidth_percent="0.5"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="16dp">
 
-    <TextView
-        android:layout_marginTop="8dp"
-        android:id="@+id/tv_desc_pahlawan"
-        android:layout_width="match_parent"
-        tools:text="@tools:sample/lorem/random"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/iv_pahlawan" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_pahlawan"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:imageUrl="@{pahlawan.img}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/ll_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/civ_pahlawan"
+            app:layout_constraintStart_toEndOf="@id/civ_pahlawan"
+            app:layout_constraintTop_toTopOf="@id/civ_pahlawan">
+
+            <TextView
+                android:id="@+id/tv_nama_pendek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{pahlawan.nama}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="nama pendek pahlawan" />
+
+            <TextView
+                android:id="@+id/tv_nama_panjang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{pahlawan.nama2}"
+                tools:text="nama panjangnya" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_pahlawan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@{@string/txt_gambar_pahlawan(pahlawan.nama)}"
+            android:imageUrl="@{pahlawan.img}"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toBottomOf="@id/ll_nama"
+            app:layout_constraintWidth_percent="0.5"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/tv_desc_pahlawan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:paddingTop="8dp"
+            android:text="@{@string/txt_desc(pahlawan.asal,pahlawan.lahir,pahlawan.usia,pahlawan.gugur,pahlawan.lokasimakam,pahlawan.history)}"
+            app:layout_constraintTop_toBottomOf="@id/iv_pahlawan"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/tv_more_less"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="@string/txt_show_more"
+            app:layout_constraintStart_toStartOf="@+id/tv_desc_pahlawan"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc_pahlawan" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
