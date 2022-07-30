@@ -6,4 +6,5 @@
     <string name="txt_show_more">Show more</string>
     <string name="txt_show_less">Show less</string>
     <string name="txt_gambar_pahlawan">Gambar %s</string>
+    <string name="txt_scroll_to_top">Scroll to top</string>
 </resources>

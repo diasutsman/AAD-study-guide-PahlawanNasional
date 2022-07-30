@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rvHomePahlawan.adapter = PahlawanAdapter(this)
+        binding.apply {
+            rvHomePahlawan.adapter = PahlawanAdapter(this@MainActivity)
+            fabUp.setOnClickListener {
+                rvHomePahlawan.scrollToPosition(0)
+            }
+        }
     }
 }
