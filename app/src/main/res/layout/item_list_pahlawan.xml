@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="5"
-            android:paddingTop="8dp"
+            android:paddingVertical="8dp"
             android:text="@{@string/txt_desc(pahlawan.asal,pahlawan.lahir,pahlawan.usia,pahlawan.gugur,pahlawan.lokasimakam,pahlawan.history)}"
             app:layout_constraintTop_toBottomOf="@id/iv_pahlawan"
             tools:text="@tools:sample/lorem/random" />
@@ -80,7 +80,6 @@
             android:id="@+id/tv_more_less"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="8dp"
             android:text="@string/txt_show_more"
             app:layout_constraintStart_toStartOf="@+id/tv_desc_pahlawan"
             app:layout_constraintTop_toBottomOf="@id/tv_desc_pahlawan" />
