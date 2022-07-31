@@ -1,21 +1,25 @@
 package com.example.pahlawannasional.data
 
 import android.content.Context
+import android.util.Log
 import com.example.pahlawannasional.data.responses.DaftarPahlawan
 import com.example.pahlawannasional.data.responses.Pahlawan
 import com.example.pahlawannasional.utils.HelperFunctions
 import com.google.gson.Gson
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 
 class PahlawanRepository(context: Context) {
-    val pahlawanStream: Flow<List<Pahlawan>> = flowOf(
+    private val pahlawanList: List<Pahlawan> =
         Gson()
             .fromJson(
                 HelperFunctions.getJsonDataFromAsset(context, FILENAME).toString(),
                 DaftarPahlawan::class.java
-            ).daftarPahlawan as List<Pahlawan>
-    )
+            ).daftarPahlawan?.mapIndexed { i, it -> it.copy(id = i) } as List<Pahlawan>
+
+
+    fun pahlawanPagingSource() : PahlawanPagingSource {
+        Log.d("PahlawanRepository", pahlawanList.size.toString())
+        return PahlawanPagingSource(pahlawanList)
+    }
 
     companion object {
         private const val FILENAME = "pahlawan_nasional.json"

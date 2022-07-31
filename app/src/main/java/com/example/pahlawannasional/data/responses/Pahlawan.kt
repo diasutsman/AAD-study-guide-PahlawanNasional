@@ -7,6 +7,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Pahlawan(
 
+	val id: Int = 0,
+
 	@field:SerializedName("nama2")
 	val nama2: String? = null,
 

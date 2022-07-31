@@ -3,8 +3,10 @@ package com.example.pahlawannasional.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.pahlawannasional.data.PahlawanRepository
 import com.example.pahlawannasional.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +34,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.pahlawan.observe(this) {
-            adapter.submitList(it)
+            lifecycleScope.launch {
+                adapter.submitData(it)
+            }
         }
 
     }

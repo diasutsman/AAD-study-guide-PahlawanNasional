@@ -2,13 +2,13 @@ package com.example.pahlawannasional.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import com.example.pahlawannasional.data.responses.Pahlawan
 import com.example.pahlawannasional.databinding.ItemListPahlawanBinding
 
 class PahlawanAdapter :
-    ListAdapter<Pahlawan, PahlawanViewHolder>(DIFF_CALLBACK) {
+    PagingDataAdapter<Pahlawan, PahlawanViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PahlawanViewHolder(
         ItemListPahlawanBinding.inflate(LayoutInflater.from(parent.context), parent, false)
