@@ -1,36 +1,31 @@
 package com.example.pahlawannasional.ui
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import com.example.pahlawannasional.data.responses.Pahlawan
 import com.example.pahlawannasional.databinding.ItemListPahlawanBinding
-import com.example.pahlawannasional.responses.DaftarPahlawan
-import com.example.pahlawannasional.responses.Pahlawan
-import com.example.pahlawannasional.utils.HelperFunctions.getJsonDataFromAsset
-import com.google.gson.Gson
 
-class PahlawanAdapter(context: Context) :
-    RecyclerView.Adapter<PahlawanViewHolder>() {
-
-    private val pahlawanList: List<Pahlawan> = Gson()
-        .fromJson(
-            getJsonDataFromAsset(context, FILENAME).toString(),
-            DaftarPahlawan::class.java
-        ).daftarPahlawan as List<Pahlawan>
+class PahlawanAdapter :
+    ListAdapter<Pahlawan, PahlawanViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PahlawanViewHolder(
         ItemListPahlawanBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-
     override fun onBindViewHolder(holder: PahlawanViewHolder, position: Int) {
-        holder.bind(pahlawanList[position])
+        val pahlawan = getItem(position)
+        pahlawan?.let { holder.bind(it) }
     }
 
-    override fun getItemCount() = pahlawanList.size
-
     companion object {
-        private const val FILENAME = "pahlawan_nasional.json"
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Pahlawan>() {
+            override fun areItemsTheSame(oldItem: Pahlawan, newItem: Pahlawan): Boolean =
+                oldItem.hashCode() == newItem.hashCode()
+
+            override fun areContentsTheSame(oldItem: Pahlawan, newItem: Pahlawan): Boolean =
+                oldItem == newItem
+        }
     }
 }

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pahlawannasional.R
 import com.example.pahlawannasional.databinding.ItemListPahlawanBinding
-import com.example.pahlawannasional.responses.Pahlawan
+import com.example.pahlawannasional.data.responses.Pahlawan
 
 class PahlawanViewHolder(private val binding: ItemListPahlawanBinding) :
     RecyclerView.ViewHolder(binding.root) {
