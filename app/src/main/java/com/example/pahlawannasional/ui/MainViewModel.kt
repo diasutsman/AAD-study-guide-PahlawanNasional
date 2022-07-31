@@ -16,7 +16,7 @@ class MainViewModel(repository: PahlawanRepository) : ViewModel() {
     //    val pahlawan = repository.pahlawanStream.asLiveData(viewModelScope.coroutineContext)
     val pahlawan: LiveData<PagingData<Pahlawan>> = Pager(
         config = PagingConfig(
-            pageSize = ITEMS_PER_PAGE,
+            pageSize = 10,
             enablePlaceholders = false
         ),
         pagingSourceFactory = { repository.pahlawanPagingSource() }
