@@ -18,6 +18,7 @@ class MainViewModel(repository: PahlawanRepository) : ViewModel() {
         config = PagingConfig(
             pageSize = ITEMS_PER_PAGE,
             enablePlaceholders = false,
+            maxSize = ITEMS_PER_PAGE * 3
         ),
         pagingSourceFactory = { repository.pahlawanPagingSource() }
     )
